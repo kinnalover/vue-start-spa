@@ -1,38 +1,40 @@
 <template>
-    <navbar :pages="pages" :activate-page="activePage" :nav-link-click="(index) => activePage = index"></navbar>
-    <page-viewer :page="pages[activePage]"> </page-viewer>
+
 </template>
 
+
 <script>
-import PageViewer from './components/PageViewer.vue';
-import Navbar from './components/Navbar.vue';
+import PageViewer from './components/PageViewer.vue'
+
+
 export default {
     components: {
-        Navbar,
-        PageViewer
+
     },
+
+
     data() {
         return {
             activePage: 0,
             pages: [
                 {
-                    pageTitle: "Home Page",
-                    content: "this is Home Page",
-                    link: { text: 'Home', url: 'home.html' },
+                    link: { text: 'Home', url: 'index.html' },
+                    pageTitle: 'Home Page',
+                    content: 'This is the home content'
                 },
                 {
-                    pageTitle: "About Page",
-                    content: "This is About Page",
-                    link: { text: 'About', url: 'about.html' }
+                    link: { text: 'About', url: 'about.html' },
+                    pageTitle: 'About Page',
+                    content: 'This is the about content'
                 },
-
                 {
-                    pageTitle: "Contact Page",
-                    content: "This is Contact Page",
-                    link: { text: 'Contact', url: 'contact.html' }
+                    link: { text: 'Contact', url: 'contact.html' },
+                    pageTitle: 'ContactPage',
+                    content: 'This is the contact content'
                 }
+
             ]
-        }
-    }
+        };
+    },
 }
 </script>
