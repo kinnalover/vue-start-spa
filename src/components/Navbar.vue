@@ -1,29 +1,19 @@
 <template>
-    <nav
-    :class="[`navbar-${theme}`, `bg-${theme}`, 'navbar', 'navbar-expand-lg']"
-    >
+    <nav :class="[`navbar-${theme}`, `bg-${theme}`, 'navbar', 'navbar-expand-lg']">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">My app</a>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li v-for="(page, index) in pages" class="nav-item" :key="index">
-                    <a 
-                    class="nav-link"
-                    :class ="{active: activePage == index}"
-                    aria-current="page"
-
-                    :href="page.link.url"
+                    <navbar-link 
+                    :page="page" 
+                    :isActive="activePage === index"
                     @click.prevent="navLinkClick(index)"
-                    
-                    >{{ page.link.text }}</a>
-                    
+                    ></navbar-link>
                 </li>
 
             </ul>
             <form class="d-flex">
-                <button
-                class ="btn btn-primary"
-                @click.prevent="changeTheme()"
-                >Toggle
+                <button class="btn btn-primary" @click.prevent="changeTheme()">Toggle
 
                 </button>
             </form>
@@ -34,18 +24,24 @@
 </template>
 
 <script>
+import NavbarLink from './NavbarLink.vue';
+
 export default {
+    components: {
+        NavbarLink
+    },
+
     props: ['pages', 'activePage', 'navLinkClick'],
-    data(){
+    data() {
         return {
             theme: 'light',
         }
     },
     methods: {
-        changeTheme(){
+        changeTheme() {
             let theme = 'light';
-            console.log('activePage'+this.activePage)
-            if (this.theme == 'light'){
+            console.log('activePage' + this.activePage)
+            if (this.theme == 'light') {
                 theme = 'dark';
             }
             this.theme = theme;
