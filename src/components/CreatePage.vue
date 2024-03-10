@@ -86,5 +86,13 @@ export default {
       this.published = false;
     },
   },
+  watch: {
+    pageTitle(newTitle, oldTitle){
+      if (this.linkText ===oldTitle){
+        this.linkText = newTitle
+      }
+
+    }
+  }
 };
 </script>
