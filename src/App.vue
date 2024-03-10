@@ -5,15 +5,15 @@
       :active-page="activePage"
     ></navbar>
 
-
+    <router-view></router-view>
     <!-- <page-viewer
       v-if="pages.length > 0"
       :page="pages[activePage]"
     ></page-viewer> -->
 
-    <create-page
+    <!-- <create-page
       @page-created="pageCreated"
-    ></create-page>
+    ></create-page> -->
 
     
   </div>
