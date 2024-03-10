@@ -3,13 +3,15 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">My app</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li v-for="(page, index) in publishedPages" class="nav-item" :key="index">
-                    <navbar-link 
-                    :page="page" 
-                    :isActive="activePage === index"
-                    @click.prevent="navLinkClick(index)"
-                    ></navbar-link>
-                </li>
+
+                <navbar-link 
+                v-for="(page, index) in publishedPages" class="nav-item" :key="index" 
+                :index="index"
+                :page="page"
+                :isActive="activePage === index" 
+                @actived="$emit('actived')"
+                ></navbar-link>
+
 
             </ul>
             <form class="d-flex">
@@ -30,17 +32,17 @@ export default {
     components: {
         NavbarLink
     },
-    created(){
+    created() {
         this.getThemeSetting();
     },
     computed: {
-        publishedPages(){
-             return this.pages.filter(p => p.published );
+        publishedPages() {
+            return this.pages.filter(p => p.published);
         }
-       
+
     },
 
-    props: ['pages', 'activePage', 'navLinkClick'],
+    props: ['pages', 'activePage'],
     data() {
         return {
             theme: 'light',
@@ -57,12 +59,12 @@ export default {
             this.storeThemeSetting();
 
         },
-        storeThemeSetting(){
+        storeThemeSetting() {
             localStorage.setItem('theme', this.theme);
         },
-        getThemeSetting(){
+        getThemeSetting() {
             let theme = localStorage.getItem('theme');
-            if (theme){
+            if (theme) {
                 this.theme = theme;
             }
         },

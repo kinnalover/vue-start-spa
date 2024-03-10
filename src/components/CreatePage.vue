@@ -50,7 +50,7 @@
 export default {
   emits: {
     pageCreated({pageTitle, content, link, published}){
-      if (!pageObj.pageTitle){
+      if (!pageTitle){
         return false;
       }
     }
