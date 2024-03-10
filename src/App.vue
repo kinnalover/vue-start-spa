@@ -13,7 +13,7 @@
     ></page-viewer> -->
 
     <create-page
-      :page-created="pageCreated"
+      @page-created="pageCreated"
     ></create-page>
 
     

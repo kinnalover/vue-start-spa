@@ -48,7 +48,13 @@
 
 <script>
 export default {
-  props: ["pageCreated"],
+  emits: {
+    pageCreated({pageTitle, content, link, published}){
+      if (!pageObj.pageTitle){
+        return false;
+      }
+    }
+  },
   computed: {
       isFormInvalid(){
           return !this.pageTitle || !this.content || !this.linkText || !this.linkUrl;
@@ -69,7 +75,8 @@ export default {
         alert("blya vse zapolni! ");
         return;
       }
-      this.pageCreated({
+      this.$emit('pageCreated',
+      {
         pageTitle: this.pageTitle,
         content: this.content,
         link: {
@@ -77,7 +84,9 @@ export default {
           url: this.linkUrl,
         },
         published: this.published,
-      });
+      }); 
+
+      
 
       this.pageTitle =  "";
       this.content = "";
@@ -88,7 +97,7 @@ export default {
   },
   watch: {
     pageTitle(newTitle, oldTitle){
-      if (this.linkText ===oldTitle){
+      if (this.linkText === oldTitle){
         this.linkText = newTitle
       }
 
