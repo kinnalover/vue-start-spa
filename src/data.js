@@ -9,8 +9,6 @@ export default {
         return pagesStore;
     },
     getSinglePage(index){
-        console.log("getSinglePage function triggered");
-        console.log(pagesStore[index]);
         return pagesStore[index];
     }
 }

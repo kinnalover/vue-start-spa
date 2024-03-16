@@ -5,10 +5,11 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 <navbar-link v-for="(page, index) in publishedPages" class="nav-item" :key="index" :index="index"
-                    :page="page" :isActive="activePage === index" @actived="$emit('actived')"></navbar-link>
+                    :page="page" ></navbar-link>
 
                 <li>
                     <router-link to="/create" class="nav-link"  aria-current="page"
+                    active-class="active"
                         >Create Page</router-link>
                 </li>
 
@@ -33,6 +34,7 @@ export default {
     },
     created() {
         this.getThemeSetting();
+        this.pages = this.$pages.getAllPages();
     },
     computed: {
         publishedPages() {
@@ -41,10 +43,11 @@ export default {
 
     },
 
-    props: ['pages', 'activePage'],
+    
     data() {
         return {
             theme: 'light',
+            data: [],
         }
     },
     methods: {
