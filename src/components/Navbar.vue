@@ -4,14 +4,13 @@
             <a class="navbar-brand" href="#">My app</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                <navbar-link 
-                v-for="(page, index) in publishedPages" class="nav-item" :key="index" 
-                :index="index"
-                :page="page"
-                :isActive="activePage === index" 
-                @actived="$emit('actived')"
-                ></navbar-link>
+                <navbar-link v-for="(page, index) in publishedPages" class="nav-item" :key="index" :index="index"
+                    :page="page" :isActive="activePage === index" @actived="$emit('actived')"></navbar-link>
 
+                <li>
+                    <router-link to="/create" class="nav-link"  aria-current="page"
+                        >Create Page</router-link>
+                </li>
 
             </ul>
             <form class="d-flex">
