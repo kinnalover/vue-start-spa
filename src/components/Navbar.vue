@@ -8,7 +8,7 @@
                     :page="page" ></navbar-link>
 
                 <li>
-                    <router-link to="/create" class="nav-link"  aria-current="page"
+                    <router-link to="/pages/create" class="nav-link"  aria-current="page"
                     active-class="active"
                         >Create Page</router-link>
                 </li>
